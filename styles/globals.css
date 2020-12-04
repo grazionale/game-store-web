@@ -1,1 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap");
+
+:root {
+  --color-primary: #10163a;
+  --color-secondary: #212744;
+  --color-background: #262c49;
+  --color-gray-light: #7da1bc;
+  --color-blue-light: #00cfff;
+  --color-white: #ffffff;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  background: var(--color-background);
+  color: white;
+  overflow-x: hidden;
+}
+
+body,
+.sticky-footer-wrapper {
+  min-height: 100vh;
+}
