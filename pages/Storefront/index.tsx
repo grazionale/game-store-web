@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import MainComponent from '../../components/shared/MainComponent';
+import MainComponent from '../../components/shared/MainComponent'
 
 const Storefront: React.FC = () => {
-  return(
+  return (
     <>
       <MainComponent>
         <h1>StoreFront</h1>
@@ -12,4 +12,4 @@ const Storefront: React.FC = () => {
   )
 }
 
-export default Storefront;
+export default Storefront

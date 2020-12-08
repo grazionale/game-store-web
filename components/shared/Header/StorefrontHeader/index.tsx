@@ -1,10 +1,14 @@
-import React from 'react';
-import { InputGroup, FormControl, Row, Col } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import React from 'react'
+import { InputGroup, FormControl, Row, Col } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faSearch,
+  faShoppingCart,
+  faUserCircle
+} from '@fortawesome/free-solid-svg-icons'
 
-import Logo from '../../Logo';
-import styles from '../../../../styles/Header.module.css';
+import Logo from '../../Logo'
+import styles from '../../../../styles/Header.module.css'
 
 const StorefrontHeader: React.FC = () => {
   return (
@@ -17,22 +21,31 @@ const StorefrontHeader: React.FC = () => {
         <Row>
           <Col md={6} className="mb-4 mb-md-0">
             <InputGroup>
-                <FormControl placeholder="Pesquisar produto" />
+              <FormControl placeholder="Pesquisar produto" />
             </InputGroup>
           </Col>
 
           <Col md={6}>
             <Row>
               <Col md={4} xs={4}>
-                <FontAwesomeIcon icon={faSearch} color="var(--color-gray-light)" />
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  color="var(--color-gray-light)"
+                />
               </Col>
 
               <Col md={4} xs={4}>
-                <FontAwesomeIcon icon={faShoppingCart} color="var(--color-gray-light)" />
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  color="var(--color-gray-light)"
+                />
               </Col>
 
               <Col md={4} xs={4}>
-                <FontAwesomeIcon icon={faUserCircle} color="var(--color-gray-light)" />
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  color="var(--color-gray-light)"
+                />
               </Col>
             </Row>
           </Col>
@@ -42,4 +55,4 @@ const StorefrontHeader: React.FC = () => {
   )
 }
 
-export default StorefrontHeader;
+export default StorefrontHeader
