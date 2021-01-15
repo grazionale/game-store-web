@@ -1,17 +1,18 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import TitleAndPath from './TitleAndPath';
-import SearchAndIcon from './SearchAndIcon';
 import styles from '../../../styles/AdminTitle.module.css';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import TitleAndPath from './TitleAndPath';
+import SearchAndIcon from './SearchAndIcon';
 
 interface TitleAdminPanelProps {
-  title: String,
-  path: String,
-  icon?: IconProp
+  title: string;
+  path: string;
+  icon?: IconProp;
+  newPath: string;
 }
 
-const TitleAdminPanel: React.FC<TitleAdminPanelProps> = ({ title, path, icon }) => {
+const TitleAdminPanel: React.FC<TitleAdminPanelProps> = ({ title, path, icon, newPath }) => {
   return (
     <Row className="mt-4">
       {
@@ -22,7 +23,7 @@ const TitleAdminPanel: React.FC<TitleAdminPanelProps> = ({ title, path, icon }) 
             </Col>
 
             <Col lg={{ span: 4, offset: 2 }} xs={8}>
-              <SearchAndIcon icon={icon} />
+              <SearchAndIcon icon={icon} newPath={newPath} />
             </Col>
           </>
           :
