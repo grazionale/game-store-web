@@ -9,7 +9,7 @@ interface TitleAdminPanelProps {
   title: string;
   path: string;
   icon?: IconProp;
-  newPath: string;
+  newPath?: string;
 }
 
 const TitleAdminPanel: React.FC<TitleAdminPanelProps> = ({ title, path, icon, newPath }) => {
