@@ -16,7 +16,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ name }) => {
 
   return (
     <Row className={styles.background}>
-      <Col lg={6} xs={9}>
+      <Col lg={6} xs={12} className={styles.menu}>
         <Link href="/Admin"><a><FontAwesomeIcon icon={faSignal} color="var(--color-gray-light)" className={`ml-3 ${router.pathname === '/Admin' ? styles.active : ''}`} /></a></Link>
         <Link href="/Admin/Users/List"><a><FontAwesomeIcon icon={faUser} color="var(--color-gray-light)" className={`ml-3 ${router.pathname === '/Admin/Users/List' ? styles.active : ''}`} /></a></Link>
         <Link href="/Admin/Products/List"><a><FontAwesomeIcon icon={faGamepad} color="var(--color-gray-light)" className={`ml-3 ${router.pathname === '/Admin/Products/List' ? styles.active : ''}`} /></a></Link>
@@ -26,7 +26,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ name }) => {
         <Link href="#"><a><FontAwesomeIcon icon={faDollarSign} color="var(--color-gray-light)" className={`ml-3 ${router.pathname === '/Admin' ? styles.active : ''}`} /></a></Link>
       </Col>
 
-      <Col lg={6} xs={3} className="d-none d-md-block">
+      <Col lg={6} xs={3} className={styles.profile}>
         <div className="float-right">
           <span className={styles.name}>{name}</span>
           <FontAwesomeIcon icon={faUserCircle} color="var(--color-gray-light)" />
