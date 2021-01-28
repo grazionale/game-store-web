@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignal, faUser, faGamepad, faCheckSquare, faLaptop, faTicketAlt, faDollarSign, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../Logo';
-import styles from '../../../styles/MenuLateral.module.css';
+import styles from './styles.module.css';
 
 const MenuLateral: React.FC = () => {
   return (
