@@ -21,12 +21,24 @@ interface SearchAndIcon {
 
 const SearchAndIcon: React.FC<SearchAndIcon> = ({ icon, newPath }) => {
   const [search, setSearch] = useState('');
+  const [placeholder, setPlaceholder] = useState('');
   const dispatch = useDispatch();
   const router = useRouter();
 
   useEffect(() => {
     dispatch(clearSearch());
   }, [])
+
+  useEffect(() => {
+    const placeholder = {
+      '/Admin/Products/List': 'Pesquisar produto',
+      '/Admin/Categories/List': 'Pesquisar categoria',
+      '/Admin/SystemRequirements/List': 'Pesquisar requisitos de sistema',
+      '/Admin/Coupons/List': 'Pesquisar cupom',
+    }
+    
+    setPlaceholder(placeholder[router.pathname]);
+  }, [router.pathname]);
 
   const handleSearch = (): void => {
     router.replace(router.pathname, '?page=1');
@@ -35,12 +47,12 @@ const SearchAndIcon: React.FC<SearchAndIcon> = ({ icon, newPath }) => {
 
   return (
     <Row>
-      <Col lg={9} xs>
+      <Col lg={10} xs>
         <Row>
-          <Col lg={9} xs={10}>
+          <Col lg={10} xs={10}>
             <InputGroup>
               <FormControl
-                placeholder="Pesquisar usuário"
+                placeholder={placeholder} 
                 className={styles.input}
                 value={search}
                 onChange={
@@ -60,7 +72,7 @@ const SearchAndIcon: React.FC<SearchAndIcon> = ({ icon, newPath }) => {
             </InputGroup>
           </Col>
 
-          <Col lg={3} xs={2} className={styles.search_icon}>
+          <Col lg={2} xs={2} className={styles.search_icon}>
             <FontAwesomeIcon
               icon={faSearch}
               size="lg"
