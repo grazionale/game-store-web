@@ -11,7 +11,7 @@ import {
 import Image from 'next/image'
 
 import Logo from '../../Logo'
-import styles from '../../../../styles/Footer.module.css'
+import styles from './styles.module.css';
 
 const StorefrontFooter: React.FC = () => {
   return (

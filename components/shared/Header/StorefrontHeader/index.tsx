@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import Logo from '../../Logo'
-import styles from '../../../../styles/Header.module.css'
+import styles from './styles.module.css';
 
 const StorefrontHeader: React.FC = () => {
   return (
