@@ -12,6 +12,7 @@ import Image from 'next/image'
 
 import Logo from '../../Logo'
 import styles from './styles.module.css';
+import Link from 'next/link'
 
 const StorefrontFooter: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const StorefrontFooter: React.FC = () => {
       <Col md={{ span: 8, offset: 2 }}>
         <Row>
           <Col lg={7} md={12}>
-            <Row>
+            <Row className={styles.social_medias}>
               <Col lg={3} md={12} className="mb-4 mb-lg-0">
                 Acompanhe-nos
               </Col>
@@ -27,61 +28,96 @@ const StorefrontFooter: React.FC = () => {
           </Col>
 
           <Col lg={7} md={12} className="mb-4 mb-lg-0">
-            <Row>
+            <Row className={styles.social_medias}>
               <Col lg={1} xs={2}>
-                <FontAwesomeIcon icon={faFacebookF} />
+                <Link href="https://www.facebook.com/onebitcode/">
+                  <a target="_blank">
+                    <FontAwesomeIcon icon={faFacebookF} />
+                  </a>
+                </Link>
               </Col>
 
               <Col lg={1} xs={2}>
-                <FontAwesomeIcon icon={faInstagram} />
+                <Link href="https://www.instagram.com/onebitcode/">
+                  <a target="_blank">
+                    <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                </Link>
               </Col>
 
               <Col lg={1} xs={2}>
-                <FontAwesomeIcon icon={faYoutube} />
+                <Link href="https://www.youtube.com/onebitcode">
+                  <a target="_blank">
+                    <FontAwesomeIcon icon={faYoutube} />
+                  </a>
+                </Link>
               </Col>
 
               <Col lg={1} xs={2}>
-                <FontAwesomeIcon icon={faTwitter} />
+                <Link href="https://twitter.com/onebitcode">
+                  <a target="_blank">
+                    <FontAwesomeIcon icon={faTwitter} />
+                  </a>
+                </Link>
               </Col>
 
               <Col lg={1} xs={2}>
-                <FontAwesomeIcon icon={faLinkedin} />
+                <Link href="https://www.linkedin.com/in/leonardo-scorza-onebitcode-7aba352b/">
+                  <a target="_blank">
+                    <FontAwesomeIcon icon={faLinkedin} />
+                  </a>
+                </Link>
               </Col>
             </Row>
           </Col>
 
           <Col lg={{ span: 4, offset: 0 }} xs={{ span: 8, offset: 2 }}>
             <Row>
-              <Col>Contato</Col>
+              <Col>
+                <Link href="https://www.onebitcode.com">
+                  <a target="_blank">Contato</a>
+                </Link>
+              </Col>
 
-              <Col>Sobre</Col>
+              <Col>
+                <Link href="https://www.onebitcode.com">
+                  <a target="_blank">Sobre</a>
+                </Link>
+              </Col>
 
-              <Col>Blog</Col>
+              <Col>
+                <Link href="https://www.onebitcode.com">
+                  <a target="_blank">Blog</a>
+                </Link>
+              </Col>
 
-              <Col>FAQ</Col>
+              <Col>
+                <Link href="https://www.onebitcode.com">
+                  <a target="_blank">FAQ</a>
+                </Link>
+              </Col>
             </Row>
           </Col>
         </Row>
 
         <hr className={styles.line} />
         <Row>
-          <Col lg={{ span: 2, offset: 0 }} xs={{ span: 8, offset: 2 }}>
+          <Col className={styles.logo} lg={{ span: 2, offset: 0 }} xs={{ span: 8, offset: 2 }}>
             <Logo />
           </Col>
 
-          <Col lg={{ span: 6, offset: 1 }} xs={12}>
+          <Col className="text-center" lg={{ span: 6, offset: 1 }} xs={12}>
             <p style={{ color: 'var(--color-gray-light)' }}>
               onebitcode.com • contato@onebitcode.com
             </p>
           </Col>
 
           <Col lg={{ span: 2, offset: 1 }} xs={{ span: 6, offset: 3 }}>
-            <Image
-              src="/assets/logo-bootcamp.png"
-              alt="Logo Bootcamp"
-              width={240}
-              height={70}
-            />
+            <Link href="https://www.onebitcode.com">
+              <a target="_blank">
+                <Image src="/assets/logo-bootcamp.png" alt="Logo Bootcamp" width={240} height={70} />
+              </a>
+            </Link>
           </Col>
         </Row>
       </Col>
