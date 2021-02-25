@@ -3,13 +3,15 @@ import StyledButton from '../../shared/StyledButton';
 import Link from 'next/link';
 import styles from './styles.module.css';
 import ProductInfo from '../../shared/ProductInfo';
+import ProductHome from '../../../dtos/ProductHome';
 
 interface HighlightedProductsProps {
   title: string;
   type?: string;
+  products: ProductHome[];
 }
 
-const HighlightedProducts: React.FC<HighlightedProductsProps> = ({ title, type }) => {
+const HighlightedProducts: React.FC<HighlightedProductsProps> = ({ title, type, products }) => {
   return (
     <div className={styles.products}>
       <Row className={styles.products_header}>
@@ -25,21 +27,18 @@ const HighlightedProducts: React.FC<HighlightedProductsProps> = ({ title, type }
       </Row>
 
       <Row>
-        <Col md={3}>
-          <ProductInfo type={type} />
-        </Col>
-
-        <Col md={3}>
-          <ProductInfo type={type} />
-        </Col>
-
-        <Col md={3}>
-          <ProductInfo type={type} />
-        </Col>
-
-        <Col md={3}>
-          <ProductInfo type={type} />
-        </Col>
+        {
+          products?.map(
+            product => (
+              <Col md={3} key={product.id}>
+                <ProductInfo
+                  type={type}
+                  product={product}
+                />
+              </Col>
+            )
+          )
+        }
       </Row>
     </div>
   )

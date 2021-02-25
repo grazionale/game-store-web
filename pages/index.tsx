@@ -2,41 +2,52 @@ import MainComponent from '../components/shared/MainComponent';
 import { Carousel } from 'react-bootstrap';
 import styles from './styles.module.css';
 import HighlightedProducts from '../components/Storefront/HighlightedProducts';
+import HomeService from '../services/home';
+import useSWR from 'swr';
+import { toast } from 'react-toastify';
 
 const Storefront: React.FC = () => {
+  const { data, error } = useSWR('/storefront/v1/home', HomeService.index);
+  const { featured, last_releases, cheapest } = { ...data };
+
+  if (error) {
+    toast.error('Erro ao obter dados da home!')
+    console.log(error);
+  }
+
   return (
     <MainComponent>
       <Carousel className={styles.carousel}>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://meups.com.br/wp-content/uploads/2018/01/God-of-War-4-900x503.jpg"
-            alt="First slide"
-          />
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://meups.com.br/wp-content/uploads/2018/01/God-of-War-4-900x503.jpg"
-            alt="Second slide"
-          />
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://meups.com.br/wp-content/uploads/2018/01/God-of-War-4-900x503.jpg"
-            alt="Third slide"
-          />
-        </Carousel.Item>
+        {
+          featured?.slice(0, 3)?.map(
+            product => (
+              <Carousel.Item key={product.id}>
+                <img
+                  className="d-block w-100"
+                  src={product.image_url}
+                  alt={product.name}
+                />
+              </Carousel.Item>
+            )
+          )
+        }
       </Carousel>
 
-      <HighlightedProducts title="Ofertas da Semana" type="highlighted" />
+      <HighlightedProducts
+        title="Ofertas da Semana"
+        type="highlighted"
+        products={cheapest}
+      />
 
-      <HighlightedProducts title="Lançamentos" />
+      <HighlightedProducts
+        title="Lançamentos"
+        products={last_releases}
+      />
 
-      <HighlightedProducts title="Mais Populares" />
+      <HighlightedProducts
+        title="Mais Populares"
+        products={featured}
+      />
     </MainComponent>
   )
 }
