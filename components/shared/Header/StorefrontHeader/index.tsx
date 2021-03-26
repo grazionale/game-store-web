@@ -20,7 +20,7 @@ const StorefrontHeader: React.FC = () => {
 
   const handleSearch = (): void => {
     router.push(`
-      /Search${ProductSearchService.execute({ search })}
+      /Search?search=${search}&lentgh=12&page=1&order=price&direction=asc
     `);
   }
 

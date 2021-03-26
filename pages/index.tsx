@@ -5,8 +5,11 @@ import HighlightedProducts from '../components/Storefront/HighlightedProducts';
 import HomeService from '../services/home';
 import useSWR from 'swr';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 const Storefront: React.FC = () => {
+  const router = useRouter();
+
   const { data, error } = useSWR('/storefront/v1/home', HomeService.index);
   const { featured, last_releases, cheapest } = { ...data };
 
@@ -37,16 +40,39 @@ const Storefront: React.FC = () => {
         title="Ofertas da Semana"
         type="highlighted"
         products={cheapest}
+        handleSeeMore={
+          () => router.push({
+            pathname: '/Search',
+            query: {
+              order: 'price',
+              direction: 'asc'
+            }
+          })
+        }
       />
 
       <HighlightedProducts
         title="Lançamentos"
         products={last_releases}
+        handleSeeMore={
+          () => router.push({
+            pathname: '/Search',
+            query: {
+              order: 'release_date',
+              direction: 'desc'
+            }
+          })
+        }
       />
 
       <HighlightedProducts
         title="Mais Populares"
         products={featured}
+        handleSeeMore={
+          () => router.push({
+            pathname: '/Search',
+          })
+        }
       />
     </MainComponent>
   )

@@ -26,7 +26,7 @@ const Search: React.FC = () => {
     direction
   } = router.query;
 
-  const [search, setSearch] = useState(searchRouter?.toString());
+  const [search, setSearch] = useState(searchRouter?.toString() || '');
   const [order, setOrder] = useState(() => {
     if (!!orderRouter) {
       return `${orderRouter.toString()}-${router.query.direction.toString()}`;
@@ -78,7 +78,7 @@ const Search: React.FC = () => {
 
   const handleSearch = (): void => {
     router.push(`
-      /Search${ProductSearchService.execute({ search })}
+      /Search?search=${search}&lentgh=12&page=1&order=price&direction=asc
     `);
   }
 
