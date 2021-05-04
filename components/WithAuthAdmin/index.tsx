@@ -10,23 +10,35 @@ const WithAuthAdmin = (Component) => {
   const Auth = (props) => {
     const router = useRouter();
     const loggedUser: User = useSelector((state: AuthState) => state.auth.loggedUser);
-    const apiData: ApiData = JSON.parse(Cookie.get('@api-data'));
-    
-    if(!loggedUser || 
+    const apiDataCookie = Cookie.get('@api-data');
+    const apiData: ApiData = apiDataCookie ? JSON.parse(apiDataCookie) : null;
+
+    if (!loggedUser ||
       loggedUser.profile !== 'admin' ||
       !apiData ||
       !apiData['access-token'] ||
-      apiData['aceess-token'] === '') {
-      router.push('/Auth/Login')
+      apiData['aceess-token'] === ''
+    ) {
+      router.push({
+        pathname: '/Auth/Login',
+        query: {
+          callback: router.pathname
+        }
+      })
     }
-  
+
     return <Component {...props} />;
   }
   
-  if(Component.getServerSideProps) {
+  // se o component tiver o método getServerSideProps (responsável por 
+  // fazer o fetch das props e realizar o pre-render da página no server side) 
+  // ele irá repassar para o component auth, para que assim as props sejam 
+  // acessiveis pelo Auth e caso o usuário tenha acesso a página, essas props 
+  // serão repassadas ao component
+  if (Component.getServerSideProps) {
     Auth.getServerSideProps = Component.getServerSideProps;
   }
-  
+
   return Auth;
 }
 
