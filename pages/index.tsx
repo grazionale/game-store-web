@@ -7,11 +7,21 @@ import useSWR from 'swr';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-const Storefront: React.FC = () => {
+import HomeIndexData from '../dtos/HomeIndexData';
+
+interface StoreFrontProps {
+  products: HomeIndexData;
+}
+
+const Storefront: React.FC<StoreFrontProps> = ({ products }) => {
   const router = useRouter();
 
-  const { data, error } = useSWR('/storefront/v1/home', HomeService.index);
-  const { featured, last_releases, cheapest } = { ...data };
+  const { data, error } = useSWR(
+    '/storefront/v1/home',
+    HomeService.index, { initialData: products }
+  );
+
+  const { featured, last_releases, cheapest } = data;
 
   if (error) {
     toast.error('Erro ao obter dados da home!')
@@ -80,6 +90,11 @@ const Storefront: React.FC = () => {
       />
     </MainComponent>
   )
+}
+
+export async function getStaticProps() {
+  const products = await HomeService.index('/storefront/v1/home');
+  return { props: { products } }
 }
 
 export default Storefront;
